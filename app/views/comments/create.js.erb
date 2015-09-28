@@ -6,6 +6,8 @@ comment_line = '<%= j(render("comment", item: @comment)) %>';
 comments_box.append(comment_line);
 $(comment_line).fadeOut("fast");
 comments_box.find('.no-result').remove();
+$(".panel-heading.media.clearfix .info a:eq(2)").replaceWith("<%= user_name_tag(@comment.user) %>");
+$(".panel-heading.media.clearfix .info abbr:eq(1)").replaceWith("<%= raw t("common.reply_at", time: timeago(@comment.created_at))%>");
 $("abbr.timeago").timeago();
 $("textarea",comments_form).val("").focus();
 <% else %>
